@@ -1,7 +1,7 @@
 const User = require("../model/user");
 
 exports.homePage = (req, res) => {
-    res.render('index');
+    res.render('index', { user: req.session.user });
 };
 
 exports.helloWorld = (req, res) => {

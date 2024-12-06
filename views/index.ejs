@@ -5,23 +5,34 @@
 </head>
 <body>
 
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
-    </form>
+    <% if (user) { %>
+        <h1>Welcome, <%= user.username %>!</h1>
+        <a href="/galleri" class="button">Galleri</a>
+        <% if (user.isAdmin) { %>
+            <a href="/users" class="button">Users</a>
+        <% } %>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    <% } else { %>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
 
-    <h1>Register</h1>
-    <form action="/register" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Register</button>
-    </form>
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Register</button>
+        </form>
+    <% } %>
 
     <%- include ('partials/foot.ejs') %>
     
