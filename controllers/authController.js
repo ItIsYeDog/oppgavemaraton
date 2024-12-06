@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
       const user = await User.findOne({ username });
       if (user && await bcrypt.compare(password, user.password)) {
         req.session.user = user;
-        res.send("Login successful");
+        res.redirect('/');
     } else {
         res.status(401).send("Invalid username or password");
       }
