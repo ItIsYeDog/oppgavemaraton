@@ -11,7 +11,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', testRoute);
 app.use('/api', apiRoutes);
 
-
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
