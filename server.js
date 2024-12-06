@@ -5,12 +5,16 @@ const testRoute = require('./routes/homeRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 const path = require('path');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+
+app.use(express.urlencoded({ extended: true }));
 app.use('/', testRoute);
 app.use('/api', apiRoutes);
+app.use('/', authRoutes);
 
 mongoose.connect('mongodb://10.12.12.252:27017/test')
   .then(() => console.log("Connected to MongoDB"))
