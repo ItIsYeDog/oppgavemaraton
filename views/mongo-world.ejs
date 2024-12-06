@@ -1,0 +1,22 @@
+<DOCTYPE html>
+<html>
+
+<%- include('partials/head') %>
+
+<body>
+<h1>Mongo World</h1>
+<div>
+  <% if (greetings && greetings.length > 0) { %>
+    <ul>
+      <% greetings.forEach(greeting => { %>
+        <li><%= greeting.message || 'No message available' %></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No greetings found.</p>
+  <% } %>
+</div>
+</body>
+
+<%- include('partials/foot') %>
+</html>
